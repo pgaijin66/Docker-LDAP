@@ -2,12 +2,17 @@
 
 Run LDAP server in docker
 
-# Creating the docker container:
+# Creating the docker container for LDAP to use:
 
-
+```
 docker volume create slapd-database
+```
+```
 docker volume create slapd-config
+```
 
+# Run docker ldap container 
+```
 docker run \
     -p 389:389 -p 636:636 \
     --name legacy-ldap \
@@ -18,9 +23,12 @@ docker run \
     --env LDAP_ADMIN_PASSWORD="" \
     --hostname ldap.sysadminsociety.com  \
     --detach osixia/openldap:1.2.4
+ ```
 
 docker update --restart unless-stopped legacy-ldap
 
 
 # test, after the export+import
+```
 % ldapwhoami -vvv -h ldap.sysadminsociety.com -D uid=pthapa,ou=people,dc=sysadminsociety,dc=com -x -W
+```
