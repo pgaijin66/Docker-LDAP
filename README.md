@@ -25,8 +25,9 @@ docker run \
     --detach osixia/openldap:1.2.4
  ```
 
+```
 docker update --restart unless-stopped legacy-ldap
-
+```
 
 # test, after the export+import
 ```
